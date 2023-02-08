@@ -29,7 +29,7 @@ function App() {
                 modal === true ? <Modal /> : null
             }
 
-        </div>
+        </div> 
     );
 }
 
