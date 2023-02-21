@@ -25,12 +25,20 @@ function App() {
                                 <span onClick={(e) => {e.stopPropagation()}}>💗</span> {like[i]}
                             </h4>
                             <p>2월 17일 발행</p>
+                            {/* <button onClick={() => {
+                                
+                            }}>삭제</button> */}
                         </div>
                     )
                 })
             }
 
-            <input onChange={(e) => {setInput(e.target.value); console.log(input)}}></input>
+            <input onChange={(e) => {setInput(e.target.value);console.log(input)}}></input>
+            <button onClick={() => {
+                let copy = [...name];
+                copy.unshift(input);
+                setName(copy);
+            }}>글발행</button>
 
             {/* <button onClick={() => {setTitle(0)}}>글제목0</button>
             <button onClick={() => {setTitle(1)}}>글제목1</button>
