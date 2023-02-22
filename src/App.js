@@ -22,12 +22,19 @@ function App() {
                     return (
                         <div className="list" key={i}>
                             <h4 onClick={() => {setModal(true); setTitle(i);}}>{name[i]}
-                                <span onClick={(e) => {e.stopPropagation()}}>💗</span> {like[i]}
+                                <span onClick={(e) => {
+                                    e.stopPropagation()
+                                    let copy = [...like];
+                                    copy[i] = copy[i]+1;
+                                    setLike(copy)
+                                }}>💗</span> {like[i]}
                             </h4>
                             <p>2월 17일 발행</p>
-                            {/* <button onClick={() => {
-                                
-                            }}>삭제</button> */}
+                            <button onClick={() => {
+                                let copy = [...name]
+                                copy.splice(i, 1);
+                                setName(copy);
+                            }}>삭제</button>
                         </div>
                     )
                 })
@@ -39,10 +46,6 @@ function App() {
                 copy.unshift(input);
                 setName(copy);
             }}>글발행</button>
-
-            {/* <button onClick={() => {setTitle(0)}}>글제목0</button>
-            <button onClick={() => {setTitle(1)}}>글제목1</button>
-            <button onClick={() => {setTitle(2)}}>글제목2</button> */}
 
             {
                 modal === true ? <Modal title={title} name={name} setName={setName} color={'pink'}/>:null
